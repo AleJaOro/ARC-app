@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel · Kanban</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="app-header__brand">
+      <span class="app-header__mark">◧</span>
+      <h1>Panel</h1>
+    </div>
+    <p class="app-header__meta">
+      <span class="sync-dot" id="sync-dot" aria-hidden="true"></span>
+      <span id="sync-label">Conectando con Firestore…</span>
+    </p>
+  </header>
+
+  <main class="board" id="board" aria-label="Tablero Kanban">
+    <!-- Las columnas se renderizan dinámicamente desde script.js -->
+  </main>
+
+  <template id="column-template">
+    <section class="column" data-column-id="">
+      <header class="column__header">
+        <span class="column__dot" aria-hidden="true"></span>
+        <h2 class="column__title" data-role="column-title"></h2>
+        <span class="column__count" data-role="column-count">0</span>
+        <button class="column__add" type="button" data-action="add-task" title="Añadir tarea" aria-label="Añadir tarea">+</button>
+      </header>
+      <div class="column__list" data-role="task-list"></div>
+    </section>
+  </template>
+
+  <template id="card-template">
+    <article class="card" draggable="true" data-task-id="" tabindex="0">
+      <div class="card__body" data-action="edit-task">
+        <h3 class="card__title" data-role="card-title"></h3>
+        <p class="card__desc" data-role="card-desc"></p>
+      </div>
+      <button class="card__delete" type="button" data-action="delete-task" aria-label="Eliminar tarea" title="Eliminar tarea">✕</button>
+    </article>
+  </template>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+      <div class="modal__header">
+        <h2 id="modal-heading" data-role="modal-heading">Nueva tarea</h2>
+        <button class="modal__close" type="button" id="modal-close" aria-label="Cerrar">✕</button>
+      </div>
+
+      <form id="task-form" class="modal__form">
+        <label class="field">
+          <span class="field__label">Título</span>
+          <input type="text" id="task-title" maxlength="80" placeholder="Ej. Diseñar la portada" required autocomplete="off">
+        </label>
+
+        <label class="field">
+          <span class="field__label">Descripción</span>
+          <textarea id="task-desc" rows="4" maxlength="280" placeholder="Detalles, notas o contexto (opcional)"></textarea>
+        </label>
+
+        <div class="modal__actions">
+          <button type="button" class="btn btn--ghost" id="modal-cancel">Cancelar</button>
+          <button type="submit" class="btn btn--primary" id="modal-save">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- type="module" es obligatorio: script.js usa `import` del SDK modular de Firebase -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
