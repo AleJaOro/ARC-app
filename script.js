@@ -19,12 +19,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_PROYECTO.firebaseapp.com",
-  projectId: "TU_PROYECTO",
-  storageBucket: "TU_PROYECTO.appspot.com",
-  messagingSenderId: "TU_SENDER_ID",
-  appId: "TU_APP_ID"
+  apiKey: "AIzaSyBlliXbWHavnWSsHpPCNqZ24JntB-LT3RA",
+  authDomain: "arc-app-e8b65.firebaseapp.com",
+  projectId: "arc-app-e8b65",
+  storageBucket: "arc-app-e8b65.firebasestorage.app",
+  messagingSenderId: "181521804820",
+  appId: "1:181521804820:web:87d863833a205e47498101"
 };
 
 const app = initializeApp(firebaseConfig);
